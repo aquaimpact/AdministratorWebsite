@@ -26,6 +26,7 @@ import {
 } from "shards-react";
 
 import PageTitle from "../components/common/PageTitle";
+import { Redirect } from 'react-router';
 
 class Announcements extends React.Component{
 
@@ -129,12 +130,12 @@ class Announcements extends React.Component{
 		  }).then(response => {
 			if (response.status >= 200 && response.status < 300) {
 				window.location.reload(false);
-				console.log(response)
+				return <Redirect to='/' />;
 			} else {
 				alert('Somthing happened wrong');
 			}
 		});
-
+        return <Redirect to='/' />;
     }
 
     editSendButtonClick = () =>{
@@ -161,12 +162,12 @@ class Announcements extends React.Component{
 		  }).then(response => {
 			if (response.status >= 200 && response.status < 300) {
 				window.location.reload(false);
-				console.log(response)
+				return <Redirect to='/' />;
 			} else {
 				alert('Somthing happened wrong');
 			}
 		});
-
+        return <Redirect to='/' />;
     }
 
     deleteSendButtonClick = () =>{
@@ -179,13 +180,13 @@ class Announcements extends React.Component{
                 if (response.status >= 200 && response.status < 300) {
     
                     window.location.reload(false);
-                    console.log(response)
+                    return <Redirect to='/' />;
                 } else {
                     alert('Somthing happened wrong');
                 }
             }
         ).catch(err => { console.log(err); });
-
+        return <Redirect to='/' />;
     }
 
     applyCallback(startDate, endDate){

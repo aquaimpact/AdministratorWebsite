@@ -16,6 +16,7 @@ import {
 } from "shards-react";
 
 import PageTitle from "../components/common/PageTitle";
+import { Redirect } from 'react-router';
 
 class Tables extends React.Component{
 
@@ -93,13 +94,13 @@ class Tables extends React.Component{
 
 				this.setState({openBVTM:false})
 				window.location.reload(false);
-				return response;
+				return <Redirect to='/' />;
 			} else {
 				alert('Somthing happened wrong');
 			}
 		});
 	
-		event.preventDefault();
+		return <Redirect to='/' />;
 	}
 
 	handleScheduleSubmit = (event) => {
@@ -121,13 +122,13 @@ class Tables extends React.Component{
 
 				this.setState({openSchedule:false})
 				window.location.reload(false);
-				return response;
+				return <Redirect to='/' />;
 			} else {
 				alert('Somthing happened wrong');
 			}
 		});
-	
-		event.preventDefault();
+
+		return <Redirect to='/' />;
 	}
 
 	render(){
