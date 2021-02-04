@@ -1,5 +1,8 @@
 import React from "react";
-import { BrowserRouter as Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
+import routes from "./routes";
+import withTracker from "./withTracker";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./shards-dashboard/styles/shards-dashboards.1.1.0.min.css";
@@ -8,11 +11,24 @@ import Schedules from "./views/Schedules";
 import Announcements from "./views/Announcements";
 
 export default () => (
-  <>
+  <Router basename={process.env.PUBLIC_URL}>
     <div>
-      <Route exact path={`/`} render={ (routerProps) => < Schedules/>} />
-      <Route exact path={`/schedules`} render={ (routerProps) => < Schedules/>} />
-      <Route exact path={`/announcements`} render={ (routerProps) => < Announcements/>} />
+      {routes.map((route, index) => {
+        return (
+          <Route
+            key={index}
+            path={route.path}
+            exact={route.exact}
+            component={withTracker(props => {
+              return (
+                <route.layout {...props}>
+                  <route.component {...props} />
+                </route.layout>
+              );
+            })}
+          />
+        );
+      })}
     </div>
-  </>
+  </Router>
 );
