@@ -10,25 +10,32 @@ import "./shards-dashboard/styles/shards-dashboards.1.1.0.min.css";
 import Schedules from "./views/Schedules";
 import Announcements from "./views/Announcements";
 
-export default () => (
-  <Router basename={process.env.PUBLIC_URL}>
-    <div>
-      {routes.map((route, index) => {
-        return (
-          <Route
-            key={index}
-            path={route.path}
-            exact={route.exact}
-            component={withTracker(props => {
-              return (
-                <route.layout {...props}>
-                  <route.component {...props} />
-                </route.layout>
-              );
-            })}
-          />
-        );
-      })}
-    </div>
-  </Router>
-);
+function App() {
+  return(
+    
+    <Router basename={process.env.PUBLIC_URL}>
+      <div className="App">
+        {routes.map((route, index) => {
+          return (
+            <Route
+              key={index}
+              path={route.path}
+              exact={route.exact}
+              component={withTracker(props => {
+                return (
+                  <route.layout {...props}>
+                    <route.component {...props} />
+                  </route.layout>
+                );
+              })}
+            />
+          );
+        })}
+      </div>
+    </Router>
+
+  );
+  
+}
+
+export default App;
