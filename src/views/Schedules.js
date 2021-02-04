@@ -93,7 +93,6 @@ class Tables extends React.Component{
 			if (response.status >= 200 && response.status < 300) {
 
 				this.setState({openBVTM:false})
-				window.location.reload(false);
 				return <Redirect to='/' />;
 			} else {
 				alert('Somthing happened wrong');
@@ -121,7 +120,6 @@ class Tables extends React.Component{
 			if (response.status >= 200 && response.status < 300) {
 
 				this.setState({openSchedule:false})
-				window.location.reload(false);
 				return <Redirect to='/' />;
 			} else {
 				alert('Somthing happened wrong');

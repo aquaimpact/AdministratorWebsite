@@ -129,9 +129,9 @@ class Announcements extends React.Component{
 			}
 		  }).then(response => {
 			if (response.status >= 200 && response.status < 300) {
-				window.location.reload(false);
 				return <Redirect to='/' />;
 			} else {
+                console.log("Status Code:", response)
 				alert('Somthing happened wrong');
 			}
 		});
@@ -161,9 +161,10 @@ class Announcements extends React.Component{
 			}
 		  }).then(response => {
 			if (response.status >= 200 && response.status < 300) {
-				window.location.reload(false);
+                
 				return <Redirect to='/' />;
 			} else {
+                console.log("Status Code:", response)
 				alert('Somthing happened wrong');
 			}
 		});
@@ -179,9 +180,9 @@ class Announcements extends React.Component{
             response => {
                 if (response.status >= 200 && response.status < 300) {
     
-                    window.location.reload(false);
                     return <Redirect to='/' />;
                 } else {
+                    console.log("Status Code:", response)
                     alert('Somthing happened wrong');
                 }
             }
